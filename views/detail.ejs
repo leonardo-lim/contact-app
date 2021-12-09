@@ -1,0 +1,25 @@
+<div class="row vh-100 d-flex align-items-center m-0 bg-dark text-white">
+  <div class="col-8 m-auto">
+    <h1 class="text-center">Contact Detail</h1>
+
+    <% if (contact) { %>
+      <div class="card m-auto" style="width: 18rem;">
+        <div class="card-body">
+          <h3 class="card-title text-dark"><i class="bi bi-person"></i> <%= contact.name %></h3>
+          <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-envelope"></i> <%= contact.email %></h6>
+          <h5 class="card-text text-dark"><i class="bi bi-telephone"></i> <%= contact.number %></h5>
+        </div>
+        <a href="/contact/edit/<%= contact.id %>" class="btn btn-warning text-white"><i class="bi bi-pencil"></i> Edit</a>
+        <a href="/contact/delete/<%= contact.id %>" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="bi bi-trash"></i> Delete</a>
+        <a href="/contact" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Back</a>
+      </div>
+    <% } else { %>
+      <div class="card m-auto" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-text text-dark">Contact doesn't exist</h5>
+        </div>
+        <a href="/contact" class="btn btn-warning"><i class="bi bi-arrow-left"></i> Back</a>
+      </div>
+    <% } %>
+  </div>
+</div>

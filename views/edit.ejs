@@ -1,0 +1,30 @@
+<div class="row vh-100 d-flex align-items-center m-0 bg-dark text-white">
+  <div class="col-4 m-auto">
+    <h1 class="text-center">Edit Contact</h1>
+
+    <% if (typeof(errors) !== 'undefined') { %>
+      <% errors.forEach(error => { %>
+        <div class="alert alert-danger text-center m-auto p-2 mb-2" role="alert"><%= error.msg %></div>
+      <% }); %>
+    <% } %>
+
+    <form action="/contact/update" method="POST">
+      <input type="hidden" name="id" value="<%= contact.id %>">
+      <input type="hidden" name="oldNumber" value="<%= contact.oldNumber ? contact.oldNumber : contact.number %>">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="<%= contact.name %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" value="<%= contact.email %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="number" class="form-label">Number</label>
+        <input type="text" class="form-control" id="number" name="number" placeholder="Enter your number" value="<%= contact.number %>" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" onclick="return confirm('Are you sure?')"><i class="bi bi-arrow-clockwise"></i> Update</button>
+      <a href="/contact" class="btn btn-warning w-100 mt-2"><i class="bi bi-arrow-left"></i> Back</a>
+    </form>
+  </div>
+</div>
